@@ -1,0 +1,38 @@
+<% include ../partials/header%>
+
+<div class='container'>
+  <div class='row'>
+      <div class='col-md-3'>
+          <div class='thumbnail'>
+                <% if(user.avatar) {%>
+                  <img src="<%= user.avatar %>" alt='user profile image' id='profilePhoto'>
+                  <% } else { %>
+                  <img src="https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg" alt='user profile image' id='profilePhoto'>
+                  <% } %>
+                  <h1 class='shift' ><%= user.firstName  %> <%= user.lastName%></h1>
+              </div>
+      </div>
+      <div class='col-md-6'>
+          <h1 style='text-align: center;'>Comments</h1>
+          <hr>
+          <% user.comments.forEach(function(comment){ %>
+           <div class='thumbnail'>
+             <% if(user.avatar) {%>
+              <div>
+                <img src="<%= user.avatar %>" alt='user profile image' class="commentPhoto">
+                </div>
+              <% } else { %>
+                <img src="https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg" alt='user profile image' class='commentPhoto'>
+              <% } %>
+             <strong class='shift'><%= comment.author.username%></strong>
+             <p class="userComment"><%=comment.text%></p>
+            </div>
+          <% }); %>
+                 
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+<% include ../partials/footer%>
